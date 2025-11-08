@@ -3,7 +3,8 @@
 .vscode
 bin
 obj
-Packages
+**/Packages/
+**/Settings/
 Bonsai.exe.WebView2
 *.bin
 *.avi

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<WorkflowBuilder Version="2.8.5"
+<WorkflowBuilder Version="2.9.0"
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
                  xmlns:rx="clr-namespace:Bonsai.Reactive;assembly=Bonsai.Core"
@@ -460,8 +460,8 @@ Item1.Y / Item2.Item2 as Y)</scr:Expression>
       </Expression>
       <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawCircle.bonsai">
         <Diameter>0.1</Diameter>
-        <LocationX>0.5073443</LocationX>
-        <LocationY>0.573709</LocationY>
+        <LocationX>NaN</LocationX>
+        <LocationY>NaN</LocationY>
         <Layer>0</Layer>
         <ColorR>1</ColorR>
         <ColorG>1</ColorG>
@@ -471,7 +471,6 @@ Item1.Y / Item2.Item2 as Y)</scr:Expression>
       <Expression xsi:type="Combinator">
         <Combinator xsi:type="rx:Timer">
           <rx:DueTime>PT0.1S</rx:DueTime>
-          <rx:Period>PT0S</rx:Period>
         </Combinator>
       </Expression>
       <Expression xsi:type="rx:SelectMany">
@@ -557,8 +556,8 @@ Item1.Y / Item2.Item2 as Y)</scr:Expression>
             </Expression>
             <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawCircle.bonsai">
               <Diameter>0.1</Diameter>
-              <LocationX>0.8301565</LocationX>
-              <LocationY>0.6416217</LocationY>
+              <LocationX>0.107459642</LocationX>
+              <LocationY>0.479882926</LocationY>
               <Layer>0</Layer>
               <ColorR>1</ColorR>
               <ColorG>0</ColorG>
@@ -580,7 +579,7 @@ Item1.Y / Item2.Item2 as Y)</scr:Expression>
             <Expression xsi:type="IncludeWorkflow" Path="BonVision:Primitives.DrawText.bonsai">
               <ExtentX>1</ExtentX>
               <ExtentY>1</ExtentY>
-              <Text>Score: 6</Text>
+              <Text>Score: 0</Text>
               <Font>Microsoft Sans Serif, 40pt</Font>
               <Alignment>Center</Alignment>
               <LineAlignment>Center</LineAlignment>
@@ -599,7 +598,6 @@ Item1.Y / Item2.Item2 as Y)</scr:Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="rx:Timer">
                 <rx:DueTime>PT10S</rx:DueTime>
-                <rx:Period>PT0S</rx:Period>
               </Combinator>
             </Expression>
             <Expression xsi:type="Combinator">

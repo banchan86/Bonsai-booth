@@ -8,6 +8,7 @@
                  xmlns:harp="clr-namespace:Bonsai.Harp;assembly=Bonsai.Harp"
                  xmlns:beh="clr-namespace:Harp.Behavior;assembly=Harp.Behavior"
                  xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                 xmlns:cv="clr-namespace:Bonsai.Vision;assembly=Bonsai.Vision"
                  xmlns:p1="clr-namespace:Harp.SoundCard;assembly=Harp.SoundCard"
                  xmlns:scr="clr-namespace:Bonsai.Scripting.Expressions;assembly=Bonsai.Scripting.Expressions"
                  xmlns:p2="clr-namespace:Bonsai.Numerics.Distributions;assembly=Bonsai.Numerics"
@@ -75,12 +76,18 @@
       <Expression xsi:type="rx:PublishSubject">
         <Name>Draw</Name>
       </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="PortName" DisplayName="BehaviorPort" />
+      </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>HarpBehavior</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="rx:BehaviorSubject" TypeArguments="harp:HarpMessage">
               <rx:Name>BehaviorCommands</rx:Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="PortName" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="beh:Device">
@@ -90,7 +97,7 @@
                 <harp:VisualIndicators>On</harp:VisualIndicators>
                 <harp:Heartbeat>Disabled</harp:Heartbeat>
                 <harp:IgnoreErrors>false</harp:IgnoreErrors>
-                <harp:PortName>COM6</harp:PortName>
+                <harp:PortName>COM4</harp:PortName>
               </Combinator>
             </Expression>
             <Expression xsi:type="rx:PublishSubject">
@@ -200,40 +207,50 @@
             </Expression>
           </Nodes>
           <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="0" To="2" Label="Source1" />
+            <Edge From="1" To="2" Label="Source2" />
+            <Edge From="2" To="3" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
-            <Edge From="4" To="9" Label="Source1" />
             <Edge From="5" To="6" Label="Source1" />
+            <Edge From="5" To="10" Label="Source1" />
             <Edge From="6" To="7" Label="Source1" />
             <Edge From="7" To="8" Label="Source1" />
-            <Edge From="8" To="10" Label="Source1" />
-            <Edge From="9" To="10" Label="Source2" />
-            <Edge From="10" To="11" Label="Source1" />
+            <Edge From="8" To="9" Label="Source1" />
+            <Edge From="9" To="11" Label="Source1" />
+            <Edge From="10" To="11" Label="Source2" />
             <Edge From="11" To="12" Label="Source1" />
-            <Edge From="13" To="14" Label="Source1" />
+            <Edge From="12" To="13" Label="Source1" />
             <Edge From="14" To="15" Label="Source1" />
-            <Edge From="14" To="19" Label="Source1" />
             <Edge From="15" To="16" Label="Source1" />
+            <Edge From="15" To="20" Label="Source1" />
             <Edge From="16" To="17" Label="Source1" />
             <Edge From="17" To="18" Label="Source1" />
-            <Edge From="18" To="20" Label="Source1" />
-            <Edge From="19" To="20" Label="Source2" />
-            <Edge From="20" To="21" Label="Source1" />
+            <Edge From="18" To="19" Label="Source1" />
+            <Edge From="19" To="21" Label="Source1" />
+            <Edge From="20" To="21" Label="Source2" />
             <Edge From="21" To="22" Label="Source1" />
-            <Edge From="23" To="24" Label="Source1" />
+            <Edge From="22" To="23" Label="Source1" />
             <Edge From="24" To="25" Label="Source1" />
-            <Edge From="24" To="29" Label="Source1" />
             <Edge From="25" To="26" Label="Source1" />
+            <Edge From="25" To="30" Label="Source1" />
             <Edge From="26" To="27" Label="Source1" />
             <Edge From="27" To="28" Label="Source1" />
-            <Edge From="28" To="30" Label="Source1" />
-            <Edge From="29" To="30" Label="Source2" />
-            <Edge From="30" To="31" Label="Source1" />
+            <Edge From="28" To="29" Label="Source1" />
+            <Edge From="29" To="31" Label="Source1" />
+            <Edge From="30" To="31" Label="Source2" />
             <Edge From="31" To="32" Label="Source1" />
+            <Edge From="32" To="33" Label="Source1" />
           </Edges>
         </Workflow>
+      </Expression>
+      <Expression xsi:type="Combinator">
+        <Combinator xsi:type="cv:CameraCapture">
+          <cv:Index>1</cv:Index>
+          <cv:CaptureProperties />
+        </Combinator>
+      </Expression>
+      <Expression xsi:type="ExternalizedMapping">
+        <Property Name="PortName" DisplayName="SoundCardPort" />
       </Expression>
       <Expression xsi:type="GroupWorkflow">
         <Name>SoundCard</Name>
@@ -241,6 +258,9 @@
           <Nodes>
             <Expression xsi:type="rx:BehaviorSubject" TypeArguments="harp:HarpMessage">
               <rx:Name>SoundCommands</rx:Name>
+            </Expression>
+            <Expression xsi:type="ExternalizedMapping">
+              <Property Name="PortName" />
             </Expression>
             <Expression xsi:type="Combinator">
               <Combinator xsi:type="p1:Device">
@@ -302,17 +322,18 @@
             </Expression>
           </Nodes>
           <Edges>
-            <Edge From="0" To="1" Label="Source1" />
-            <Edge From="1" To="2" Label="Source1" />
-            <Edge From="3" To="4" Label="Source1" />
+            <Edge From="0" To="2" Label="Source1" />
+            <Edge From="1" To="2" Label="Source2" />
+            <Edge From="2" To="3" Label="Source1" />
             <Edge From="4" To="5" Label="Source1" />
             <Edge From="5" To="6" Label="Source1" />
             <Edge From="6" To="7" Label="Source1" />
             <Edge From="7" To="8" Label="Source1" />
             <Edge From="8" To="9" Label="Source1" />
-            <Edge From="10" To="11" Label="Source1" />
+            <Edge From="9" To="10" Label="Source1" />
             <Edge From="11" To="12" Label="Source1" />
             <Edge From="12" To="13" Label="Source1" />
+            <Edge From="13" To="14" Label="Source1" />
           </Edges>
         </Workflow>
       </Expression>
@@ -423,7 +444,7 @@
               <SpatialFrequency>10</SpatialFrequency>
               <TemporalFrequency>1</TemporalFrequency>
               <Phase>0</Phase>
-              <Angle>65.73479</Angle>
+              <Angle>-30.6009617</Angle>
               <SquareWave>false</SquareWave>
               <Contrast>1</Contrast>
               <DutyCycle xsi:nil="true" />
@@ -528,7 +549,7 @@
               <SpatialFrequency>10</SpatialFrequency>
               <TemporalFrequency>1</TemporalFrequency>
               <Phase>0</Phase>
-              <Angle>-44.875164</Angle>
+              <Angle>52.9949722</Angle>
               <SquareWave>false</SquareWave>
               <Contrast>1</Contrast>
               <DutyCycle xsi:nil="true" />
@@ -776,8 +797,8 @@ it ? 0.0 : 1.0 as R)</scr:Expression>
               <LocationY>0</LocationY>
               <Layer>0</Layer>
               <Angle>0</Angle>
-              <ColorR>1</ColorR>
-              <ColorG>0</ColorG>
+              <ColorR>0</ColorR>
+              <ColorG>1</ColorG>
               <ColorB>0</ColorB>
               <ColorA>1</ColorA>
             </Expression>
@@ -809,14 +830,16 @@ it ? 0.0 : 1.0 as R)</scr:Expression>
       <Edge From="4" To="5" Label="Source1" />
       <Edge From="6" To="7" Label="Source1" />
       <Edge From="7" To="8" Label="Source1" />
-      <Edge From="11" To="12" Label="Source1" />
+      <Edge From="9" To="10" Label="Source1" />
       <Edge From="12" To="13" Label="Source1" />
-      <Edge From="13" To="14" Label="Source1" />
       <Edge From="14" To="15" Label="Source1" />
       <Edge From="15" To="16" Label="Source1" />
       <Edge From="16" To="17" Label="Source1" />
       <Edge From="17" To="18" Label="Source1" />
       <Edge From="18" To="19" Label="Source1" />
+      <Edge From="19" To="20" Label="Source1" />
+      <Edge From="20" To="21" Label="Source1" />
+      <Edge From="21" To="22" Label="Source1" />
     </Edges>
   </Workflow>
 </WorkflowBuilder>

@@ -195,7 +195,7 @@
         </Workflow>
       </Expression>
       <Expression xsi:type="GroupWorkflow">
-        <Name>Logic</Name>
+        <Name>PanTiltUpdate</Name>
         <Workflow>
           <Nodes>
             <Expression xsi:type="SubscribeSubject">

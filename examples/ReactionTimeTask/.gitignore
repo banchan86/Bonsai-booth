@@ -1,0 +1,10 @@
+# Bonsai
+.bonsai/Packages
+.bonsai/Settings
+.bonsai/Bonsai.exe
+.bonsai/Bonsai.exe.settings
+.bonsai/Bonsai.exe.WebView2
+
+# Data
+Data/
+.ipynb_checkpoints/
